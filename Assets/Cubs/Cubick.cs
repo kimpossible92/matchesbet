@@ -34,7 +34,7 @@ public class Cubick : MonoBehaviour, ISpaceship, IDamagable
     [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private Material material1;
     [SerializeField] private Material material2;
-
+    float zemlya = 1f;
     // Use this for initialization
     void Start()
     {
@@ -48,6 +48,7 @@ public class Cubick : MonoBehaviour, ISpaceship, IDamagable
         //}
         playerTowerCon.Init(this);
         posStart = transform.position;
+        zemlya = transform.localPosition.y;
         lvllive = 0; playerTowerCon.SetMenu(true);
     }
     public void SaveBombStripePackage()
@@ -88,7 +89,7 @@ public class Cubick : MonoBehaviour, ISpaceship, IDamagable
                 lvllive -= damageDealer.Damage;
                 var p = pools.Find(c => c.gameObject.name == lvllive.ToString());
                 p.gameObject.transform.SetParent(FindObjectOfType<Road>().transform);
-                p.transform.localPosition = transform.localPosition;
+                p.transform.localPosition = new Vector3(transform.localPosition.x, zemlya, transform.localPosition.z);
                 p.GetComponent<Renderer>().material = material2;
                 FindObjectOfType<Road>().addgems(p);
                 pools.Remove(p);
