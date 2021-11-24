@@ -6,13 +6,11 @@ using Facebook.Unity;
 
 public class OpLvl : MonoBehaviour {
     public static OpLvl THIS;
-    public MoveLayer GetMoveLayer;
     public static OpLvl _instance;
     [SerializeField]MapLevel2[] GetLevels;
     public EventHandler<LevelProp> LevelSelect;
     public EventHandler<LevelProp> LevelReach;
     public MapLevel2 currentLevel;
-    [SerializeField] OpenAppLevel GetManager;
     [SerializeField] GameObject NextImage;
     [SerializeField] GameObject buttonImage;
     public bool IsEnabled;
@@ -33,13 +31,7 @@ public class OpLvl : MonoBehaviour {
             {
                 currentLevel = hit.collider.gameObject.GetComponent<MapLevel2>();
                 if (currentLevel.islock == false) {
-                    GetManager.lvl(currentLevel.Number);
-                    //PortalNetwork.THIS.LeaderBoard(currentLevel.Number);
-                    //NextImage.gameObject.SetActive(true);
-                    //buttonImage.SetActive(true);
-                    OpenAppLevel.THIS.StripeGameCount = 0;
-                    GetManager.OnappMatch();
-                    GetTargetLoad(currentLevel.Number);
+
                 }
             }
         }
@@ -58,14 +50,11 @@ public class OpLvl : MonoBehaviour {
             {
                 string starsString = tag.Replace("STARS",string.Empty).Trim();
                 string[] stars123 = starsString.Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
-                GetManager.selectscores(int.Parse(stars123[0]), int.Parse(stars123[1]), int.Parse(stars123[2]));
+                //GetManager.selectscores(int.Parse(stars123[0]), int.Parse(stars123[1]), int.Parse(stars123[2]));
             }
             if(tag.StartsWith("LIMIT"))
             {
-                string limitsString = tag.Replace("LIMIT", string.Empty).Trim();
-                string[] limit12 = limitsString.Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
-                GetMoveLayer.movecount = int.Parse(limit12[1]);
-                GetMoveLayer.limitMove = int.Parse(limit12[0]);
+
             }
         }
     }

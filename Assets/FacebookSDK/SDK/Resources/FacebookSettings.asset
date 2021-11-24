@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: -2115301841, guid: b96583fe9d2614f3081becbbd70cd55f, type: 3}
   m_Name: FacebookSettings
   m_EditorClassIdentifier: 
-  selectedAppIndex: 1
+  selectedAppIndex: 0
   clientTokens:
   - 
   - 

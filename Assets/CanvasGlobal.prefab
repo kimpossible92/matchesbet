@@ -1332,6 +1332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GetButtonFB: {fileID: 7384406445218530904}
+  menuGUI: {fileID: 7384406446636842023}
 --- !u!1 &7384406445243293397
 GameObject:
   m_ObjectHideFlags: 0
@@ -3459,7 +3460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: baa175537610ad34e87c9f0230a0d900, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 014d0740558286940a20278fba85b1ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

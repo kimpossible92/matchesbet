@@ -46,7 +46,7 @@ public class FacebookScript : MonoBehaviour
         new FacebookConnectRequest().SetSwitchIfPossible(true).SetAccessToken(accessToken).Send((response) => {
             if (!response.HasErrors)
             {
-                MoveLayer.THIS.Name = response.DisplayName.ToString();//
+                //MoveLayer.THIS.Name = response.DisplayName.ToString();//
                 GetButtonFB.gameObject.SetActive(false);
                 PortalNetwork.THIS.UserID = response.UserId;
                 GetPicture(AccessToken.CurrentAccessToken.TokenString);Tournament.joined = true;Tournament.tournament.MenuTounamentClick();
@@ -86,7 +86,7 @@ public class FacebookScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GetPicture(AccessToken.CurrentAccessToken.TokenString);
+            //GetPicture(AccessToken.CurrentAccessToken.TokenString);
         }
     }
     private void OnHideUnity(bool isGameShown)
@@ -136,7 +136,7 @@ public class FacebookScript : MonoBehaviour
             var dic = result.ResultDictionary["data"] as Dictionary<string, object>;
             string url = dic.Where(i => i.Key == "url").First().Value as string;
             print(url);
-            MoveLayer.THIS.urlOnTournament = url;
+            //MoveLayer.THIS.urlOnTournament = url;
             StartCoroutine(loadPicture(url));
         }
 

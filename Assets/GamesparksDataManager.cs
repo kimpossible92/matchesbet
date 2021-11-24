@@ -272,7 +272,7 @@ public class GamesparksDataManager : IDataManager
             //Debug.Log(c.Key.ToString());
             if (PortalNetwork.THIS.IsYou(c.Key.ToString()))
             {//
-                if (!OpenAppLevel.THIS.onf7) Tournament.joined = true;
+                //if (!OpenAppLevel.THIS.onf7) Tournament.joined = true;
                 string idtime = "5be8b796fc37de04ee99c3ca";
                 //Debug.Log(c.Key.ToString());
                 //Debug.Log(c.Key.ToString());
@@ -364,7 +364,8 @@ public class GamesparksDataManager : IDataManager
     public void LoginWithFriends(Dictionary<string, string> dic, string UserIDFriend, int levelpl)
     {
         //addurlplayer
-        string url1 = MoveLayer.THIS.urlOnTournament.Replace("https://platform-lookaside.fbsbx.com/platform/profilepic/?", string.Empty);
+        string urlOnTournament = "";
+        string url1 = urlOnTournament.Replace("https://platform-lookaside.fbsbx.com/platform/profilepic/?", string.Empty);
         new LogEventRequest()
             .SetEventKey("addurlplayer")
             .SetEventAttribute("url", url1)

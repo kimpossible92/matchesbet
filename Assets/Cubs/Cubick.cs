@@ -90,6 +90,7 @@ public class Cubick : MonoBehaviour, ISpaceship, IDamagable
                 p.gameObject.transform.SetParent(FindObjectOfType<Road>().transform);
                 p.transform.localPosition = transform.localPosition;
                 p.GetComponent<Renderer>().material = material2;
+                FindObjectOfType<Road>().addgems(p);
                 pools.Remove(p);
             }
             

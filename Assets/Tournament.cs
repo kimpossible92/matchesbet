@@ -161,6 +161,8 @@ public class Tournament : MonoBehaviour
                 }
             }
         }
+        //day = DateTime.Now.AddDays(2.0f);
+       
     }
     public void TimeParse(string timeParse)
     {
@@ -249,6 +251,7 @@ public class Tournament : MonoBehaviour
         PortalNetwork.THIS.GetPlayersTournament();//
         //}
         Tournament.tournament.kubokButton();
+        EndTournamentTime = DateTime.Now.AddDays(17.0f);
         //TourametWindow.GetComponent<TounamentLB>().OnSwitch();
         //TounamentLB.THIS.OnSwitch();
         //TounamentLB.THIS.OnSwitch();

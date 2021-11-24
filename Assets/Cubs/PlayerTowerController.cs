@@ -5,17 +5,38 @@ using UnityEngine;
 
 public class PlayerTowerController : Cubs
 {
+    [Header("Behavior")]
+    public float JumpPower = 2.25f;
+    public float MaxJumpTime = 1.25f;
+    [SerializeField]
+    private float _StoreMaxTime;
+    private bool jumping = false;
+    private Rigidbody rb;
+
+    [Header("Settings")]
+    public LayerMask mask;
+    public float CheckExstends;
     public bool spaceNot = false;
     protected override void ProcessHandling(MovementSystem movementSystem)
     {
+        if (Menu) { return; }
+        var isGround = Physics.Raycast(transform.position, Vector3.down, 1 * CheckExstends, mask);
+
         
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+        if (isGround && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
         {
-            //if(transform.position.y<=0.1f&&!Menu)transform.Translate(new Vector3(0,4,1));
-            if (transform.position.y <= 4.25f && !Menu&&spaceNot==false) { transform.position += new Vector3(0, 0.25f, 0.1f); }
-            Invoke("jumpdelay2", 1f);
-            Invoke("jumpdelay", 1f);
-            Invoke("jumpdelay2", 0.1f);
+            MaxJumpTime = _StoreMaxTime;
+        }
+
+        if ((Input.GetKey(KeyCode.Space)||Input.GetMouseButton(0)) && MaxJumpTime > 0&& transform.position.y<=2f)
+        {
+            MaxJumpTime -= Time.deltaTime;
+            rb.AddForce(new Vector2(0, JumpPower), ForceMode.Impulse);
+        }
+
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) && !isGround)
+        {
+            MaxJumpTime = -1f;
         }
     }
     private void jumpdelay()
@@ -34,7 +55,11 @@ public class PlayerTowerController : Cubs
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        JumpPower = 2.0f;
+        MaxJumpTime = 0.45f;
+        _StoreMaxTime = MaxJumpTime;
+
     }
 
     // Update is called once per frame

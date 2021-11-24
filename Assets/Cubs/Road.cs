@@ -7,6 +7,7 @@ public class Road : MonoBehaviour
     private int pcolor;
     [SerializeField] private Cub Offcorms;
     List<Cub> GetOffcorms = new List<Cub>();
+    List<ProjectilePool> projectiles = new List<ProjectilePool>();
     public int mycolor() { return pcolor; }
     [SerializeField] int Count;
     int saver = 8;
@@ -31,6 +32,15 @@ public class Road : MonoBehaviour
             if(p!=null)Destroy(p.gameObject);
         }
         GetOffcorms.Clear();
+        foreach (var p in projectiles)
+        {
+            if (p != null) Destroy(p.gameObject);
+        }
+        projectiles.Clear();
+    }
+    public void addgems(ProjectilePool c)
+    {
+        projectiles.Add(c);
     }
     public void loadRoad()
     {
