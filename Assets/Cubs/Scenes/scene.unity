@@ -2635,7 +2635,7 @@ GameObject:
   - component: {fileID: 1490871811}
   - component: {fileID: 1490871809}
   - component: {fileID: 1490871808}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2654,13 +2654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d93400504918604a949d7c268a08620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 2
-  MaxJumpTime: 0.45
-  _StoreMaxTime: 0
   mask:
     serializedVersion: 2
     m_Bits: 64
-  CheckExstends: 5
   spaceNot: 0
 --- !u!54 &1490871808
 Rigidbody:

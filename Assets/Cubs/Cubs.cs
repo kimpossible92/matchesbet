@@ -36,6 +36,7 @@ public abstract class Cubs : MonoBehaviour
     }
     public void PerFrameUpdate()
     {
+        if (Menu) { return; }
         ProcessHandling(_spaceship.MovementSystem);
     }
     protected abstract void ProcessHandling(MovementSystem movementSystem);

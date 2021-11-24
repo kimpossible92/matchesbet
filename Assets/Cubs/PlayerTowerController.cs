@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class PlayerTowerController : Cubs
 {
-    [Header("Behavior")]
-    public float JumpPower = 2.25f;
-    public float MaxJumpTime = 1.25f;
-    [SerializeField]
-    private float _StoreMaxTime;
     private bool jumping = false;
     private Rigidbody rb;
 
-    [Header("Settings")]
+
     public LayerMask mask;
-    public float CheckExstends;
+
+    private float CheckExstends=2f;
     public bool spaceNot = false;
     protected override void ProcessHandling(MovementSystem movementSystem)
     {
-        if (Menu) { return; }
-        var isGround = Physics.Raycast(transform.position, Vector3.down, 1 * CheckExstends, mask);
+        float _StoreMaxTime = 0.45f;
+        float JumpPower = 0.35f;
+       
+        float MaxJumpTime = 0.45f;
+        var isGround = Physics.Raycast(transform.position, Vector3.down, 1 * 3f, mask);
 
         
         if (isGround && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
@@ -31,7 +30,8 @@ public class PlayerTowerController : Cubs
         if ((Input.GetKey(KeyCode.Space)||Input.GetMouseButton(0)) && MaxJumpTime > 0&& transform.position.y<=2f)
         {
             MaxJumpTime -= Time.deltaTime;
-            rb.AddForce(new Vector2(0, JumpPower), ForceMode.Impulse);
+            transform.position += new Vector3(0, JumpPower, 0.1f);
+            //rb.AddForce(new Vector2(0, JumpPower), ForceMode.Impulse);
         }
 
         if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) && !isGround)
@@ -51,14 +51,20 @@ public class PlayerTowerController : Cubs
     {
        
     }
-
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        //JumpPower = 2.0f;
+        //MaxJumpTime = 0.45f;
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        JumpPower = 2.0f;
-        MaxJumpTime = 0.45f;
-        _StoreMaxTime = MaxJumpTime;
+        //JumpPower = 2.0f;
+        //MaxJumpTime = 0.45f;
+        //_StoreMaxTime = MaxJumpTime;
 
     }
 

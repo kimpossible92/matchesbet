@@ -251,7 +251,7 @@ public class Tournament : MonoBehaviour
         PortalNetwork.THIS.GetPlayersTournament();//
         //}
         Tournament.tournament.kubokButton();
-        EndTournamentTime = DateTime.Now.AddDays(17.0f);
+        
         //TourametWindow.GetComponent<TounamentLB>().OnSwitch();
         //TounamentLB.THIS.OnSwitch();
         //TounamentLB.THIS.OnSwitch();
@@ -305,6 +305,7 @@ public class Tournament : MonoBehaviour
         {
             CheckQualification.GetComponent<Image>().enabled = false;
         }
+        //if(EndTournamentTime.Hour<= 0) EndTournamentTime.AddHours(48.0f);
     }
     public void NotLimitTimer()
     {
@@ -362,6 +363,11 @@ public class Tournament : MonoBehaviour
     {
         get
         {
+            if ((DateTime.UtcNow - EndTournamentTime).Hours * (-1) > 0)
+            {
+                EndTournamentTime = DateTime.UtcNow.AddHours(27);
+                return DateTime.UtcNow - EndTournamentTime;
+            }
             return DateTime.UtcNow - EndTournamentTime;
         }
     }
