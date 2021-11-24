@@ -19,7 +19,7 @@ public class PlayerTowerController : Cubs
         float JumpPower = 0.35f;
        
         float MaxJumpTime = 0.45f;
-        var isGround = Physics.Raycast(transform.position, Vector3.down, 1 * 3f, mask);
+        var isGround = Physics.Raycast(transform.position, Vector3.down, 1 * 2f, mask);
 
         
         if (isGround && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
@@ -27,7 +27,7 @@ public class PlayerTowerController : Cubs
             MaxJumpTime = _StoreMaxTime;
         }
 
-        if ((Input.GetKey(KeyCode.Space)||Input.GetMouseButton(0)) && MaxJumpTime > 0&& transform.position.y<=2f)
+        if ((Input.GetKey(KeyCode.Space)||Input.GetMouseButton(0)) && MaxJumpTime > 0&& transform.position.y<=1.6f)
         {
             MaxJumpTime -= Time.deltaTime;
             transform.position += new Vector3(0, JumpPower, 0.1f);
