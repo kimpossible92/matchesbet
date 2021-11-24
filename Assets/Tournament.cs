@@ -85,7 +85,7 @@ public class Tournament : MonoBehaviour
             {
                 //print(t12);
             }
-            Tournament.tournament.division = 20190310;
+            Tournament.tournament.division = 20190331;
             bool save1 = false;
             if (time12.Length > 0)
             {
@@ -305,6 +305,7 @@ public class Tournament : MonoBehaviour
         {
             CheckQualification.GetComponent<Image>().enabled = false;
         }
+        TimerTxt.gameObject.SetActive(false);
         //if(EndTournamentTime.Hour<= 0) EndTournamentTime.AddHours(48.0f);
     }
     public void NotLimitTimer()
@@ -442,7 +443,7 @@ public class Tournament : MonoBehaviour
         }
         if (TimeLeftToEnd.Days * (-1) < 0 || TimeLeftToEnd.Hours * (-1) < 0 || TimeLeftToEnd.Minutes * (-1) < 0 || TimeLeftToEnd.Seconds * (-1) < 0)
         {
-            rezervedTime = new DateTime(2019, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
+            rezervedTime = new DateTime(2019, DateTime.Now.Month, DateTime.Now.Day+1, 23, 59, 59);
             TimerTxt.text = string.Format("{1:00}:{2:00}:{3:00}", reservMyTimer.Days * (-1), reservMyTimer.Hours * (-1), reservMyTimer.Minutes * (-1), reservMyTimer.Seconds * (-1));
             TimerTxt2.text = string.Format("{1:00}:{2:00}:{3:00}", reservMyTimer.Days * (-1), reservMyTimer.Hours * (-1), reservMyTimer.Minutes * (-1), reservMyTimer.Seconds * (-1));
             TimerTxt3.text = string.Format("{1:00}:{2:00}:{3:00}", reservMyTimer.Days * (-1), reservMyTimer.Hours * (-1), reservMyTimer.Minutes * (-1), reservMyTimer.Seconds * (-1));
